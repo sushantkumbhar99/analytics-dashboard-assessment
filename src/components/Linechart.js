@@ -21,11 +21,22 @@ ChartJS.register(
   Legend
 );
 
+// Shimmer effect component
+const Shimmer = () => {
+  return (
+      <div className="h-[300px] w-full max-w-full m-auto rounded-lg shadow-lg animate-pulse bg-gray-200">
+          <div className="h-[200px] bg-gray-300 rounded-lg"></div>
+          <div className="h-6 mt-4 bg-gray-300 rounded-md"></div>
+      </div>
+  );
+};
+
+
 const Linechart = () => {
   const jsonData = useContext(DataContext);
 
   if (!jsonData || jsonData.length === 0) {
-    return <p>Loading data...</p>;
+    return  <Shimmer/>;
   }
 
   // Process the data

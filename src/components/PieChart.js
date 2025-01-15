@@ -8,11 +8,22 @@ import { Chart as ChartJS, Tooltip, Legend, ArcElement } from "chart.js";
 // Register required components for Chart.js
 ChartJS.register(Tooltip, Legend, ArcElement);
 
+// Shimmer effect component
+const Shimmer = () => {
+  return (
+      <div className="h-[300px] w-full max-w-full m-auto rounded-lg shadow-lg animate-pulse bg-gray-200">
+          <div className="h-[200px] bg-gray-300 rounded-lg"></div>
+          <div className="h-6 mt-4 bg-gray-300 rounded-md"></div>
+      </div>
+  );
+};
+
+
 const PieChart = () => {
   const jsonData = useContext(DataContext);
 
   if (!jsonData || jsonData.length === 0) {
-    return <p>Loading data...</p>;
+    return  <Shimmer/>
   }
 
   // Calculate eligible and not eligible counts
@@ -65,12 +76,13 @@ const PieChart = () => {
       </div>
 
       {/* Text Section */}
-      <div className="w-full md:w-1/2 flex items-center justify-center text-center">
-        <p className="text-xl text-gray-900 font-bold">
-          This chart shows the distribution of electric vehicle types across
-          manufacturers.
-        </p>
-      </div>
+      <div className="w-full md:w-1/2 flex flex-col items-center  justify-center   space-y-4">
+ 
+  <p className="  font-semibold text-stone-800 ">
+    Breakdown of electric vehicles eligible for the CAFV program.
+  </p>
+ 
+</div>
     </div>
   );
 };
