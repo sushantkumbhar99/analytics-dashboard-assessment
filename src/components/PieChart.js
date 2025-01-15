@@ -58,7 +58,7 @@ const PieChart = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-[300px] mx-auto shadow-lg p-3 rounded-lg items-center gap-4">
+    <div className="flex flex-wrap md:flex-nowrap md:h-[100%] h-auto mx-auto shadow-lg p-4 rounded-lg items-stretch gap-4 overflow-hidden">
       {/* Chart Section */}
       <div className="w-full md:w-1/2">
         <Pie data={data} options={options} />
